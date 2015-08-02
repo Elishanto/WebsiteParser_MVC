@@ -2,6 +2,7 @@ package ru.elishanto.parser.view;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ConsoleView {
@@ -10,8 +11,12 @@ public class ConsoleView {
         System.out.println("2. Курсы валют");
         System.out.println("3. HiTech новости");
         System.out.print("Введите цифру: ");
-        final int what = new Scanner(System.in).nextInt();
-        return what;
+        try {
+            final int what = new Scanner(System.in).nextInt();
+            return what;
+        } catch (NoSuchElementException e) {
+            return -1;
+        }
     }
 
     ArrayList<String> news;
