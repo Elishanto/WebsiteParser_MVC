@@ -1,34 +1,34 @@
 package ru.elishanto.parser;
 
+import ru.elishanto.parser.controller.CurrencyController;
+import ru.elishanto.parser.controller.HiTechNewsController;
+import ru.elishanto.parser.controller.NewsController;
 import ru.elishanto.parser.model.Data;
 
 public class Main {
     public static void main(String[] args) {
-        final Data data = new Data();
-
         //main loop
         while (true) {
-            final int what = data.consoleView.task();
+            final int what = Data.consoleView.task();
             switch (what) {
-                //news case
                 case 1:
-                    data.HTML = data.newsController.HTML;
-                    data.consoleView.setNews(data.news);
-                    data.newsController.getNews(data.news);
+                    Data.HTML = NewsController.HTML;
+                    Data.consoleView.setNews(Data.news);
+                    Data.newsController.getNews(Data.news);
                     break;
                 case 2:
-                    data.HTML = data.currencyController.HTML;
-                    data.consoleView.setCurrency(data.currency);
-                    data.currencyController.getCurrency(data.currency);
+                    Data.HTML = CurrencyController.HTML;
+                    Data.consoleView.setCurrency(Data.currency);
+                    Data.currencyController.getCurrency(Data.currency);
                     break;
                 case 3:
-                    data.HTML = data.hiTechNewsController.HTML;
-                    data.consoleView.setHiTechNews(data.hiTechNews);
-                    data.hiTechNewsController.getHiTechNews(data.hiTechNews);
+                    Data.HTML = HiTechNewsController.HTML;
+                    Data.consoleView.setHiTechNews(Data.hiTechNews);
+                    Data.hiTechNewsController.getHiTechNews(Data.hiTechNews);
                 default:
                     break;
             }
-            data.consoleView.show(what);
+            Data.consoleView.show(what);
         }
     }
 }
